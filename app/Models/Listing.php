@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -142,7 +141,6 @@ class Listing extends Model
 
         $this->images()->delete();
     }
-
     public function getPrimaryImageUrlAttribute(): ?string
     {
         $path = $this->primaryImage?->path ?? $this->images->first()?->path;
