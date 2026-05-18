@@ -109,7 +109,7 @@
             <div class="row g-4">
                 @forelse ($listings as $listing)
                     <div class="col-md-6 col-xl-4">
-                        <div class="card border-0 shadow-sm listing-card h-100">
+                        <div class="card border-0 listing-card h-100">
                             <div class="listing-card-image">
                                 @if ($listing->primary_image_url)
                                     <img src="{{ $listing->primary_image_url }}" alt="{{ $listing->title }}">

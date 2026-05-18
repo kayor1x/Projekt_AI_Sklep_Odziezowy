@@ -16,7 +16,7 @@ class ListingFilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search' => ['nullable', 'string', 'max:100'],
+            'search' => ['nullable', 'string', 'max:20'],
             'category_id' => ['nullable', 'integer', 'exists:categories,id'],
             'price_min' => ['nullable', 'numeric', 'min:0'],
             'price_max' => ['nullable', 'numeric', 'gte:price_min'],

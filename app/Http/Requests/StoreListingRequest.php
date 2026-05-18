@@ -16,8 +16,8 @@ class StoreListingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:120'],
-            'description' => ['required', 'string', 'min:20', 'max:2000'],
+            'title' => ['required', 'string', 'max:20'],
+            'description' => ['required', 'string', 'min:6', 'max:2000'],
             'price' => ['required', 'numeric', 'min:0.01', 'max:99999.99'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'condition' => ['required', Rule::in(Listing::CONDITION_OPTIONS)],
