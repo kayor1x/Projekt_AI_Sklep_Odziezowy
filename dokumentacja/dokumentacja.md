@@ -17,6 +17,7 @@ danych, autoryzacji dostępu oraz praktycznym filtrowaniu ogłoszeń.
 
 | Element                 | Technologia / wersja | link                                                    |
 |-------------------------|---------------------:|---------------------------------------------------------|
+| IDE                     |             PhpStorm | https://www.jetbrains.com/phpstorm/download                                                        |
 | Backend                 |           PHP 8.2.12 | https://www.php.net/distributions/php-8.2.12.tar.gz     |
 | Framework backendowy    |      Laravel 12.56.0 | https://github.com/laravel/installer                    |
 | Menedżer zależności PHP |       Composer 2.9.5 | https://getcomposer.org/download/2.9.5/composer.phar    |
@@ -25,11 +26,11 @@ danych, autoryzacji dostępu oraz praktycznym filtrowaniu ogłoszeń.
 ### Wymagania programowe
 
 Do uruchomienia projektu na czystym komputerze potrzebne są:
-
+0. PhpStorm
 1. PHP w wersji 8.2
 2. Composer
 3. PostgreSQL
-4. Git lub możliwość pobrania projektu jako archiwum ZIP
+4. Git
 5. Terminal
 
 W pliku `php.ini` upewnić się, że aktywne są rozszerzenia:
@@ -51,18 +52,17 @@ Stworzyć folder, odtworzyć w tym folderze terminal wpisać:
 
 ```
 git clone https://github.com/kayor1x/Projekt_AI_Sklep_Odziezowy.git
-cd Projekt_AI_Sklep_Odziezowy
-```
-
-### 2. Instalacja zależności PHP
-
-```
-composer install
 ```
 
 ---
 
 ## Proces konfiguracji
+
+### 0. Instalacja zależności PHP
+Odtworzyć terminal w folderze projektu lub przez PhpStorm i w konsoli IDE wpisać:
+```
+composer install
+```
 
 ### 1. Utworzenie pliku środowiskowego
 
@@ -115,13 +115,6 @@ Zdjęcia ogłoszeń są przechowywane na publicznym dysku Laravel. Żeby przegl�
 php artisan storage:link
 ```
 
-Jeżeli link już istnieje i występują problemy ze zdjęciami, można go usunąć i utworzyć ponownie:
-
-```
-Remove-Item public/storage -Force
-php artisan storage:link
-```
-
 ### 6. Uruchomienie projektu
 
 ```
@@ -145,8 +138,6 @@ Po wykonaniu seedów dostępne są przykładowe konta:
 | Administrator | `admin@example.com`    | `password` |
 | Użytkownik    | `jan@example.com`      | `password` |
 | Użytkownik    | `yevhenii@example.com` | `password` |
-
-Administrator ma dostęp do panelu `/admin`. Zwykły użytkownik może tworzyć i edytować tylko własne ogłoszenia.
 
 ---
 
@@ -194,10 +185,12 @@ Zalogowany użytkownik może:
 - usuwać własne ogłoszenia;
 - przeglądać swój dashboard;
 - aktualizować dane profilu;
-![profile.png](zdjecia/profile.png)
-- usunąć konto.
-![deletedacc.png](zdjecia/deletedacc.png)
 
+![profile.png](zdjecia/profile.png)
+
+- usunąć konto.
+
+![deletedacc.png](zdjecia/deletedacc.png)
 
 Użytkownik nie może edytować ani usuwać ogłoszeń innych osób.
 
@@ -215,18 +208,26 @@ Administrator może:
 ## User flow: Przeglądanie ogłoszeń
 
 1. Użytkownik otwiera stronę główną aplikacji.
+
 ![Glowna strona aplikacji](zdjecia/main-page.png)
+
 2. Aplikacja wyświetla listę aktywnych ogłoszeń.
 3. Użytkownik może użyć filtrów po lewej stronie.
+
 ![Filtry](zdjecia/adidas.png)
+
 4. Po kliknięciu przycisku View Details użytkownik przechodzi do strony szczegółów.
+
 ![Szegóły](zdjecia/details.png)
+
 5. Na stronie szczegółów widoczne są: tytuł, cena, kategoria, rozmiar, stan, opis, zdjęcia, dane sprzedającego, czas
    publikacji.
+
 ![Szegóły](zdjecia/details_view.png)
 
 
 ### Obsługiwane filtry
+
 ![Filtry](zdjecia/filters.png)
 
 System pozwala filtrować ogłoszenia według:
@@ -266,10 +267,15 @@ użytkownik widzi tylko ogłoszenia spełniające wybrane kryteria.
 1. Użytkownik musi zalogować się do systemu.
 
 ![Login](zdjecia/login.png)
+
 2. Użytkownik klika na przycisk `Sell Item` w nav-barze.
+
 ![Sell](zdjecia/sell.png)
+
 3. Aplikacja wyświetla formularz tworzenia ogłoszenia.
+
 ![Create](zdjecia/create_form.png)
+
 4. Użytkownik uzupełnia dane:
     - tytuł;
     - opis;
@@ -279,12 +285,19 @@ użytkownik widzi tylko ogłoszenia spełniające wybrane kryteria.
     - rozmiar;
     - zdjęcia.
 5. Aplikacja sprawdza poprawność danych.
+
 ![Create](zdjecia/fail_create.png)
+
 6. Jeżeli dane są poprawne, ogłoszenie zostaje zapisane w bazie danych.
+
 ![Create](zdjecia/succes_create.png)
+
 7. Użytkownik zostaje przekierowany na stronę szczegółów nowego ogłoszenia.
+
 ![Create](zdjecia/listing_created.png)
+
 8. Ogłoszenie pojawia się na publicznej liście ogłoszeń.
+
 ![Create](zdjecia/visiblie_listed.png)
 
 ### Walidacja formularza ogłoszenia
@@ -306,18 +319,28 @@ System sprawdza między innymi:
 
 1. Użytkownik loguje się do systemu.
 2. Użytkownik klika przycisk `My Dashboard`.
+
 ![dashboard.png](zdjecia/dashboard.png)
+
 3. Aplikacja wyświetla listę ogłoszeń należących do zalogowanego użytkownika.
 4. Użytkownik klika `Edit`.
 5. Aplikacja wyświetla formularz z aktualnymi danymi.
 6. Użytkownik zmienia dane i zapisuje formularz.
+
 ![edit.png](zdjecia/edit.png)
+
 7. Aplikacja sprawdza poprawność danych i zapisuje zmiany w bazie.
+
 ![edited.png](zdjecia/edited.png)
+
 8. Jeżeli użytkownik chce usunąć ogłoszenie, system pokazuje stronę potwierdzenia.
+
 ![delete.png](zdjecia/delete.png)
+
 9. Po potwierdzeniu ogłoszenie oraz jego zdjęcia zostają usunięte.
+
 ![deleted.png](zdjecia/deleted.png)
+
 ### Obsługa zdjęć
 
 Zdjęcia ogłoszeń są zapisywane w katalogu storage aplikacji. W bazie danych przechowywana jest ścieżka do pliku, a nie
@@ -332,7 +355,9 @@ storage/app/public/listings
 ---
 
 ## Panel administratora
+
 ![admin_panel.png](zdjecia/admin_panel.png)
+
 1. Administrator loguje się na konto z rolą `admin`.
 2. Aplikacja automatycznie przekieruje na panel admina lub można kliknąć przycisk `Admin Panel` w nav-barze.
 3. Aplikacja wyświetla panel administracyjny.
@@ -341,27 +366,37 @@ storage/app/public/listings
 6. Administrator może zobaczyć ilość użytkowników, ogłoszeń, kategorii, ostatnie ogłoszenia.
 
 ### Zarządzanie kategoriami
+
 ![categories.png](zdjecia/categories.png)
+
 Administrator może:
 
 - dodać nową kategorię;
 
 ![cr_cat.png](zdjecia/cr_cat.png)
+
 ![socks.png](zdjecia/socks.png)
+
 - edytować nazwę kategorii;
 
 ![edc.png](zdjecia/edc.png)
+
 ![kenguru.png](zdjecia/kenguru.png)
+
 ![edkeng.png](zdjecia/edkeng.png)
+
 - usunąć kategorię (nie można usunąć kategorię wykorzystaną w ogloszeniach);
 
 ![restrict_delete.png](zdjecia/restrict_delete.png)
+
 - przeglądać ilość ogłoszeń z każdą kategorią.
 
 Kategorie są wykorzystywane w formularzu dodawania ogłoszenia oraz w filtrach publicznej listy ogłoszeń.
 
 ### Zarządzanie ogłoszeniami
+
 ![adminlistings.png](zdjecia/adminlistings.png)
+
 Administrator może:
 
 - zobaczyć szegoly wszystkich ogłoszen w systemie;
@@ -400,15 +435,18 @@ Relacja w bazie danych chroni przed przypadkowym usunięciem kategorii, która j
 ## Responsywność
 
 Desktopowa wersja stróny głównej
+
 ![desktop_main.png](zdjecia/desktop_main.png)
 
 Mobilna:
 
 ![mobile1.png](zdjecia/mobile1.png)
+
 ![mobile2.png](zdjecia/mobile2.png)
+
 ![burger.png](zdjecia/burger.png)
 
-zdjecia zrobione za pomocy F12
+zdjęcia zrobione w trybie developera w przeglądarce, iphone 14 pro max
 
 ---
 
