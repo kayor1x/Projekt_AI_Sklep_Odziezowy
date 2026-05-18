@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(CategorySeeder::class);
+        $this->call(DemoListingSeeder::class);
 
         User::query()->updateOrCreate(
             ['email' => 'admin@example.com'],

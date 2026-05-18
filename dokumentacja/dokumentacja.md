@@ -122,15 +122,7 @@ Remove-Item public/storage -Force
 php artisan storage:link
 ```
 
-### 6. Czyszczenie cache
-
-Po większych zmianach w konfiguracji albo routingu warto wykonać:
-
-```
-php artisan optimize:clear
-```
-
-### 7. Uruchomienie projektu
+### 6. Uruchomienie projektu
 
 ```
 php artisan serve
