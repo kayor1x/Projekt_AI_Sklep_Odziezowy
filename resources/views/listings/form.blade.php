@@ -22,7 +22,7 @@
 
                     <div class="mb-0">
                         <label for="description" class="form-label">Description</label>
-                        <textarea id="description" name="description" class="form-control" rows="6" minlength="20" maxlength="2000" required>{{ old('description', $listing->description) }}</textarea>
+                        <textarea id="description" name="description" class="form-control" rows="6" minlength="6" maxlength="2000" required>{{ old('description', $listing->description) }}</textarea>
                         <div class="form-text">Include fit, brand, color, and any visible wear.</div>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
             'T-Shirts',
             'Sweaters',
             'Accessories',
+            'Bag',
         ])->each(function (string $categoryName): void {
             Category::updateOrCreate(
                 ['slug' => Str::slug($categoryName)],

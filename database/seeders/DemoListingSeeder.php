@@ -50,7 +50,7 @@ class DemoListingSeeder extends Seeder
         );
 
         $category = Category::firstOrCreate([
-            'name' => 'Shoes',
+            'name' => 'Bag',
         ]);
 
         $listing = Listing::create([
